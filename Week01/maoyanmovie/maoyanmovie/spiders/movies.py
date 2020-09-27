@@ -4,12 +4,12 @@ from bs4 import BeautifulSoup
 from maoyanmovie.items import MaoyanmovieItem
 
 
-class DoubanSpider(scrapy.Spider):
+class MaoyanSpider(scrapy.Spider):
     # 定义爬虫名称
-    name = 'douban'
-    allowed_domains = ['movie.douban.com']
+    name = 'maoyan'
+    allowed_domains = ['maoyan.com']
     # 起始URL列表
-    start_urls = ['https://movie.douban.com/top250']
+    start_urls = ['https://maoyan.com/films?showType=3']
 
 #   注释默认的parse函数
 #   def parse(self, response):
@@ -20,8 +20,8 @@ class DoubanSpider(scrapy.Spider):
     # start_requests()方法读取start_urls列表中的URL并生成Request对象，发送给引擎。
     # 引擎再指挥其他组件向网站服务器发送请求，下载网页
     def start_requests(self):
-        for i in range(0, 10):
-            url = f'https://movie.douban.com/top250?start={i*25}'
+        for i in range(0, 1):
+            url = 'https://maoyan.com/films?showType=3'
             yield scrapy.Request(url=url, callback=self.parse)
             # url 请求访问的网址
             # callback 回调函数，引擎回将下载好的页面(Response对象)发给该方法，执行数据解析
