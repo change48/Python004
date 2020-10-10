@@ -1,7 +1,6 @@
 from fake_useragent import UserAgent
 import requests
 import time
-import re
 
 ua = UserAgent(verify_ssl=False)
 headers = {
